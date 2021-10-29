@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"os/exec"
 
@@ -13,7 +14,8 @@ func Traceroute(ipstr string, s *discordgo.Session, m *discordgo.MessageCreate) 
 	if err != nil {
 		log.Println(err)
 	} else {
-		s.ChannelMessageSend(m.ChannelID, "> "+ipstr+"\n "+m.Author.Mention()+"\n```"+string(out)+"```")
+		content := fmt.Sprintf("> %s\n %s\n```%s```", ipstr, m.Author.Mention(), string(out))
+		s.ChannelMessageSend(m.ChannelID, content)
 	}
 }
 
@@ -23,6 +25,7 @@ func Mtr(ipstr string, s *discordgo.Session, m *discordgo.MessageCreate) {
 	if err != nil {
 		log.Println(err)
 	} else {
-		s.ChannelMessageSend(m.ChannelID, "> "+ipstr+"\n "+m.Author.Mention()+"\n```"+string(out)+"```")
+		content := fmt.Sprintf("> %s\n %s\n```%s```", ipstr, m.Author.Mention(), string(out))
+		s.ChannelMessageSend(m.ChannelID, content)
 	}
 }
