@@ -12,6 +12,7 @@ import (
 	"time"
 
 	"github.com/bwmarrin/discordgo"
+	"github.com/joho/godotenv"
 	"github.com/x86taka/mdtrb/bgpview"
 )
 
@@ -36,8 +37,8 @@ var (
 )
 
 func init() {
-
-	flag.StringVar(&Token, "t", "", "Bot Token")
+	godotenv.Load()
+	flag.StringVar(&Token, "t", os.Getenv("BOT_TOKEN"), "Bot Token")
 	flag.Parse()
 }
 
